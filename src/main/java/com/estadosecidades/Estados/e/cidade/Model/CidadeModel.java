@@ -3,6 +3,7 @@ package com.estadosecidades.Estados.e.cidade.Model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cidade")
 
-public class CidadeModel {
+public class CidadeModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +22,12 @@ public class CidadeModel {
     @Column(length = 35, nullable = false)
     private String nomeCidade;
 
-
-
+    @ManyToOne
+    @JoinColumn(name="cidade/id")
+    private EstadoModel estadoModel;
 }
+
+
+
+
+
